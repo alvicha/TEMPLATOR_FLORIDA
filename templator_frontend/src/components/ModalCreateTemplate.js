@@ -118,12 +118,13 @@ const ModalCreateTemplate = ({ visibleModalCreateTemplate, setVisibleModalCreate
                 onHide={() => setVisibleModalCreateTemplate(false)}
             >
                 <div className="mt-3">
-                    <label className='mr-3' htmlFor="firstname">Nombre Plantilla: </label>
-                    <InputText className="mb-2 w-50" placeholder="Introduce nombre de plantilla" value={nameTemplate} onChange={(e) => setNameTemplate(e.target.value)} aria-labelledby="name" />
+                    <label className='mr-3 mb-2' htmlFor="firstname">Nombre Plantilla: </label>
+                    <InputText className="input-template mb-2" placeholder="Introduce nombre de plantilla" value={nameTemplate} onChange={(e) => setNameTemplate(e.target.value)} aria-labelledby="name" />
                 </div>
                 <div className="mt-3">
-                    <label className='mr-3' htmlFor="firstname">Lista Contextos: </label>
+                    <label className='mr-3 mb-2' htmlFor="firstname">Lista Contextos: </label>
                     <Dropdown
+                        className='dropdown-contexts'
                         value={selectedContextTemplate}
                         onChange={(e) => handleContextTemplateChange(e.value)}
                         options={contextsList}

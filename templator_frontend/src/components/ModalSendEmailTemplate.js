@@ -70,7 +70,7 @@ const ModalSendEmailTemplate = ({ toast, previewFinalTemplate, visibleModalSendE
             >
                 <div className="mt-3">
                     <label className='mr-3' htmlFor="firstname">Correo Destinatario: </label>
-                    <InputText type="email" className="mb-2 w-50" placeholder="Introduce correo de destinatario" value={nameAddressee} onChange={(e) => setNameAddressee(e.target.value)} aria-labelledby="nameAddressee" />
+                    <InputText type="email" className="mb-2 input-email" placeholder="Introduce correo de destinatario" value={nameAddressee} onChange={(e) => setNameAddressee(e.target.value)} aria-labelledby="nameAddressee" />
                 </div>
             </Dialog>
 

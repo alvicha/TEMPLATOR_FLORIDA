@@ -185,6 +185,18 @@ p {
     align-items: center
 }
 
+.dropdown-contexts {
+    width: 50%;
+}
+
+.input-template {
+    width: 50%;
+}
+
+.input-email {
+    width: 50%;
+}
+
 @media (max-width:768px) {
     .texto-aplicacion {
         font-size: 25px;
@@ -226,6 +238,20 @@ p {
 
     .nav-link {
         padding: 8px;
+    }
+}
+
+@media (max-width: 420px) {
+    .dropdown-contexts {
+        width: 100%;
+    }
+
+    .input-template {
+        width: 100%;
+    }
+
+    .input-email {
+        width: 100%;
     }
 }
 
