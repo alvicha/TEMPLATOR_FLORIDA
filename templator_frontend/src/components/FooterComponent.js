@@ -7,7 +7,7 @@ const FooterComponent = () => {
             </div>
 
             <div className="col-12 col-md-6 col-sm-6 text-md-right text-lg-right text-center version">
-                <p>&copy; Version 1.43</p>
+                <p>&copy; Version 1.44</p>
             </div>
         </footer>
     );
