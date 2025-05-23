@@ -22,17 +22,17 @@
     "process": "^0.11.10",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-loader-spinner": "^5.3.4",
+    "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^7.4.1",
     "react-scripts": "5.0.1",
     "summernote": "^0.8.18",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-     "start": "react-scripts start",
-     "build": "react-scripts build",
-     "test": "react-scripts test",
-     "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
