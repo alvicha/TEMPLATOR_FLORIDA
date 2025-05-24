@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { deleteTemplateDB } from "../services/services";
 import ScreensContext from "../screens/ScreensContext";
@@ -84,6 +84,10 @@ const TableTemplatesList = ({ filterDataTemplates }) => {
         setCurrentPage(newPage);
     };
 
+    useEffect(() => {
+        filterDataTemplates();
+    }, [selectedSortOrder, selectedColumnTable]);
+
     return (
         <div className="card mb-3 ml-1">
             <div className="d-flex justify-content-between align-items-center text-left bg-white border p-2">
@@ -101,7 +105,6 @@ const TableTemplatesList = ({ filterDataTemplates }) => {
                 onSort={(e) => {
                     setSelectedColumnTable(e.sortField);
                     setSelectedSortOrder(e.sortOrder);
-                    filterDataTemplates();
                 }}
                 emptyMessage="No se han encontrado registros">
                 <Column field="id" header="Id" sortable style={{ width: '5%' }}></Column>

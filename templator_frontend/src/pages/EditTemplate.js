@@ -211,9 +211,8 @@ const EditTemplate = () => {
         try {
             event.preventDefault();
             const cleanedContent = cleanHtml(currentContent);
-            setSelectedTemplateContent(currentContent);
-            setOriginalSubjectTemplate(subjectTemplate);
 
+            setOriginalSubjectTemplate(subjectTemplate);
             const updatedData = { ...selectedTemplate.data };
 
             updatedData[codeLanguage] = {
@@ -229,9 +228,14 @@ const EditTemplate = () => {
             const response = await updateTemplateApi(selectedTemplate.id, body, setAlert, setVisibleAlert);
 
             if (response) {
-                setLoadingEditor(false);
+                setSelectedTemplate(prev => ({
+                    ...prev,
+                    data: updatedData
+                }));
+                setSelectedTemplateContent(cleanedContent);
                 toast.current.show({ severity: 'success', summary: 'Información', detail: 'Plantilla actualizada con éxito', life: 3000 });
             }
+            setLoadingEditor(false);
         } catch (error) {
             setAlert("Ha ocurrido un error: " + error.message);
             setVisibleAlert(true);
