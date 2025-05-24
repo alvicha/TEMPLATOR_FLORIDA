@@ -299,12 +299,12 @@ const EditTemplate = () => {
      * Llama a las APIs de idiomas y contextos una vez al montar el componente.
      */
     useEffect(() => {
+        setLoadingEditor(true);
         languagesApi();
         contextsApi();
     }, []);
 
     useEffect(() => {
-        setLoadingEditor(true);
         if (listLanguages.length > 0) {
             getSelectedTemplateEditor();
         }
