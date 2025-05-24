@@ -30,7 +30,6 @@ const EditTemplate = () => {
     const [visiblePreviewFinalTemplate, setvisiblePreviewFinalTemplate] = useState(false);
     const toast = useRef(null);
     const idTemplateParams = useParams();
-    const [summernoteInitialized, setSummernoteInitialized] = useState(false);
 
     const { editorSummernote, currentContent, setCurrentContent, setAlert, setVisibleAlert, visibleAlert, visibleActionButton, setVisibleActionButton, setContextsList, placeholdersList,
         setPlaceholdersList, templates, setTemplates, listLanguages, setListLanguages, fieldsDisabled, loadingEditor, setLoadingEditor,
@@ -110,7 +109,6 @@ const EditTemplate = () => {
                 setSubjectTemplate(response.data[codeLanguage].subject);
                 setOriginalSubjectTemplate(response.data[codeLanguage].subject);
                 setSelectedTemplateContent(response.data[codeLanguage].content);
-                setSummernoteInitialized(false);
 
                 if (!selectedLanguageDropdown) {
                     setSelectedLanguageDropdown(selectedLanguage.value);
@@ -307,10 +305,10 @@ const EditTemplate = () => {
 
     useEffect(() => {
         setLoadingEditor(true);
-        if (listLanguages.length > 0 && codeLanguage) {
+        if (listLanguages.length > 0) {
             getSelectedTemplateEditor();
         }
-    }, [listLanguages, codeLanguage]);
+    }, [listLanguages]);
 
     useEffect(() => {
         if (listLanguages.length > 0 && !codeLanguage) {
@@ -324,9 +322,8 @@ const EditTemplate = () => {
     useEffect(() => {
         if (!visiblePreviewFinalTemplate || selectedTemplateContent) {
             changeSummernoteLanguage(codeLanguage);
-            setSummernoteInitialized(true);
         }
-    }, [codeLanguage, selectedTemplateContent, summernoteInitialized, visiblePreviewFinalTemplate]);
+    }, [codeLanguage, selectedTemplateContent, visiblePreviewFinalTemplate]);
 
     useEffect(() => {
         if (!visiblePreviewFinalTemplate) {
