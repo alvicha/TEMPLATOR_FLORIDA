@@ -304,6 +304,10 @@ const EditTemplate = () => {
     }, []);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
         setLoadingEditor(true);
         if (listLanguages.length > 0) {
             getSelectedTemplateEditor();
