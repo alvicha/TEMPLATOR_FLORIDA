@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { deleteTemplateDB } from "../services/services";
 import ScreensContext from "../screens/ScreensContext";
@@ -83,10 +83,6 @@ const TableTemplatesList = ({ filterDataTemplates }) => {
         const newPage = event.first / event.rows;
         setCurrentPage(newPage);
     };
-
-    useEffect(() => {
-        filterDataTemplates();
-    }, [selectedSortOrder, selectedColumnTable]);
 
     return (
         <div className="card mb-3 ml-1">
