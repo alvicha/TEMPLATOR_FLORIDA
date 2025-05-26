@@ -103,8 +103,10 @@ const EditTemplate = () => {
         try {
             const selectedLanguage = listLanguages.find(lang => lang.code === codeLanguage);
             const response = await listTemplateById(idTemplateParams.id, setAlert, setVisibleAlert);
+            console.log(1);
 
             if (response && codeLanguage) {
+                console.log(2);
                 setSelectedTemplate(response);
                 setNameTemplate(response.code);
                 setSubjectTemplate(response.data[codeLanguage].subject);
@@ -116,8 +118,10 @@ const EditTemplate = () => {
                 }
                 setLoadingEditor(false);
             } else {
+                console.log(3);
                 setCodeLanguage("es");
                 console.log(codeLanguage);
+                setLoadingEditor(false);
             }
         } catch (error) {
             setAlert("Ha ocurrido un error: " + error.message);
@@ -314,7 +318,7 @@ const EditTemplate = () => {
     }, []);
 
     useEffect(() => {
-        if (listLanguages.length > 0) {
+        if (listLanguages.length > 0 && codeLanguage) {
             getSelectedTemplateEditor();
         }
     }, [listLanguages]);
