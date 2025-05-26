@@ -313,6 +313,8 @@ const EditTemplate = () => {
 
     useEffect(() => {
         setLoadingEditor(true);
+        console.log(loadingEditor);
+        console.log(listLanguages.length);
         if (listLanguages.length > 0) {
             getSelectedTemplateEditor();
         }
