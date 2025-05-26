@@ -117,6 +117,7 @@ const EditTemplate = () => {
                 setLoadingEditor(false);
             } else {
                 setCodeLanguage("es");
+                console.log(codeLanguage);
             }
         } catch (error) {
             setAlert("Ha ocurrido un error: " + error.message);
