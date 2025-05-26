@@ -30,6 +30,7 @@ const EditTemplate = () => {
     const [visiblePreviewFinalTemplate, setvisiblePreviewFinalTemplate] = useState(false);
     const toast = useRef(null);
     const idTemplateParams = useParams();
+    const hasLoadedTemplate = useRef(false);
 
     const { editorSummernote, currentContent, setCurrentContent, setAlert, setVisibleAlert, visibleAlert, visibleActionButton, setVisibleActionButton, setContextsList, placeholdersList,
         setPlaceholdersList, templates, setTemplates, listLanguages, setListLanguages, fieldsDisabled, loadingEditor, setLoadingEditor,
@@ -103,7 +104,7 @@ const EditTemplate = () => {
         try {
             const selectedLanguage = listLanguages.find(lang => lang.code === codeLanguage);
             const response = await listTemplateById(idTemplateParams.id, setAlert, setVisibleAlert);
-            console.log(1);
+            console.log("Respuesta de plantilla:", response);
 
             if (response && codeLanguage) {
                 console.log(2);
@@ -318,16 +319,17 @@ const EditTemplate = () => {
     }, []);
 
     useEffect(() => {
-        if (listLanguages.length > 0 && codeLanguage) {
-            getSelectedTemplateEditor();
-        }
-    }, [listLanguages]);
-
-    useEffect(() => {
         if (listLanguages.length > 0 && !codeLanguage) {
             setCodeLanguage("es");
         }
     }, [listLanguages, codeLanguage]);
+
+    useEffect(() => {
+        if (codeLanguage && !hasLoadedTemplate.current) {
+            getSelectedTemplateEditor();
+            hasLoadedTemplate.current = true;
+        }
+    }, [codeLanguage]);
 
     /**
      * Cambia el idioma del editor cuando `codeLanguage` o `actionButtonUpdate` cambian.
