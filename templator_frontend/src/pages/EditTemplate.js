@@ -99,11 +99,12 @@ const EditTemplate = () => {
     };
 
     const getSelectedTemplateEditor = async () => {
+        setLoadingEditor(true);
         try {
             const selectedLanguage = listLanguages.find(lang => lang.code === codeLanguage);
             const response = await listTemplateById(idTemplateParams.id, setAlert, setVisibleAlert);
 
-            if (codeLanguage) {
+            if (response && codeLanguage) {
                 setSelectedTemplate(response);
                 setNameTemplate(response.code);
                 setSubjectTemplate(response.data[codeLanguage].subject);
@@ -312,9 +313,6 @@ const EditTemplate = () => {
     }, []);
 
     useEffect(() => {
-        setLoadingEditor(true);
-        console.log(loadingEditor);
-        console.log(listLanguages.length);
         if (listLanguages.length > 0) {
             getSelectedTemplateEditor();
         }
